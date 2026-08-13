@@ -1,59 +1,73 @@
-# Welcome to My GitHub Profile!
+# Richard "Danny" Comeau
 
-## 🙋‍♂️ About Me
+Platform and DevOps engineer focused on CI/CD, release automation, and deployment architecture. I design how software gets built, versioned, and shipped, and I automate the operational work around it.
 
-Hello, I'm Richard (Danny) Comeau, the Chief Technology Officer (CTO) of Wealth Build. I lead our talented developer teams specializing in full-stack development, AI, UI/UX Design, and Database management. With a passion for crafting elegant solutions to complex problems, I'm dedicated to creating efficient and secure software that powers modern applications.
+- Senior Consultant, Platform Engineering at [Plante Moran](https://www.plantemoran.com/)
+- Co-Founder / CTO at [Wealth Build](https://www.wealthbuild.ai)
+- Open to select fractional and advisory engagements (architecture reviews, CI/CD and deployment strategy, technical due diligence). More at [richardcomeau.com](https://richardcomeau.com)
 
-## 💼 Experience
+## What I do
 
-### [Wealth Build](https://www.wealthbuild.ai) | CTO | Oct 2021 - Present
-- Leading developer teams in the creation of enterprise-grade FinTech solutions.
-- Mentoring junior engineers and promoting Agile principles and design patterns.
-- Architecting cloud resources using Pulumi and Azure Bicep scripting.
-- Designing a .NET-based backend with N-Tier architecture.
-- Creating reusable React components for an intuitive UI/UX experience.
+On the Platform Engineering team at Plante Moran I own release engineering for internal applications: designing CI/CD pipelines, standardizing how we version and ship software, and building the automation that keeps it reliable.
 
-### [Plante Moran](https://www.plantemoran.com/) | Senior Associate | Feb 2023 - Present
-- Experienced Senior Consultant with expertise in DevOps principles, CI/CD pipelines, and Azure Cloud resources.
-- Proficient in programming languages such as C#, TypeScript, .NET, SQL Server, React, and Pulumi.
-- Proven ability to design, develop, and deploy CI/CD pipelines using Azure DevOps.
-- Skilled in developing and maintaining custom applications using C#, TypeScript, .NET, SQL Server, and React.
-- Strong understanding of DevOps principles, including continuous integration, continuous delivery, and continuous deployment.
-- Demonstrated ability to work closely with clients to understand their business needs and provide innovative solutions.
-- Experienced in designing and implementing Azure cloud resources such as virtual machines, virtual networks, and storage accounts.
-- Excellent problem-solving and analytical skills, with a focus on ensuring software applications meet quality standards.
-- Strong communicator with the ability to work collaboratively with team members in a fast-paced environment.
-- Dedicated to excellence and innovation, with a passion for helping clients achieve their business goals.
+Selected work:
 
-### [Vizient Inc](https://www.vizientinc.com) | Software Engineer | Sep 2020 - Feb 2023
-- Developed full-stack solutions using TDD and pair-programming.
-- Created web and desktop applications using C#, ASP.NET, MVC, and Entity Framework.
-- Integrated third-party tools such as Wrike, Tableau, and Power BI.
-- Proficient in SQL Server for database design and optimization.
+- Designed a tag-based deployment standard on GitHub Actions that replaced a legacy environment-branch model, cutting average deployment time from over 2 hours to under 30 minutes. Adopted as the organization-wide standard.
+- Migrated roughly 60 repositories onto that standard using scripted analysis and a GitHub Copilot fleet rollout: about 120 minutes of review versus an estimated 120 hours of hand work.
+- Built PowerShell automation that reduced a recurring reporting task from upwards of 45 hours to under a minute.
 
-### [WebMall](https://www.linkedin.com/company/webmallshopping/) | Full Stack Developer | May 2020 - Aug 2020
-- Designed .NET API Controllers and React dashboard for inventory management.
-- Developed SQL procedures for backend data manipulation.
-- Created reusable React components for an enhanced user experience.
+### Tag-based deployment standard
 
-### [U.S. Navy](https://www.navy.mil) | Database Administrator | Sep 2013 - Mar 2020
-- Managed software access, user roles, and passwords.
-- Created and executed queries to track maintenance actions and inventory.
-- Oversaw program audits and maintenance records.
+```mermaid
+flowchart LR
+    dev["Developer<br/>creates git tag"] --> repo["Repository<br/>tagged release"]
+    repo --> ci["CI: Build<br/>immutable artifact"]
+    ci --> cd["CD: Deploy<br/>promote by tag"]
+    cd --> env["Environments<br/>dev / test / prod"]
+```
 
-## 📚 Education
+Build one immutable artifact, promote that same artifact across environments by git tag. What was tested is exactly what ships.
 
-- 🎓 Associates of Arts, Columbia College | Oct 2016
-- 📜 Azure Fundamentals, Microsoft Certification | Feb 2021
-- 📜 Azure IoT Developer Specialty, Microsoft Certification | Aug 2021
+## Currently building
 
-## 🛠️ Skills
+GitOps for Kubernetes: standing up Helm-based, continuously reconciled deployments and leading the organization's GitOps adoption.
 
-- **Languages & Frameworks:** .NET Framework, Spring Boot, Azure Cloud, Blazor.Net, SQL Server, C#, F#, Java, React, Angular, TypeScript, AJAX.
-- **Architectures & Technologies:** N-Tier Architecture, Microservices, Docker, Azure Pipelines, OOP, Functional Programming, Azure IoT Services, Agile Leadership.
+```mermaid
+flowchart LR
+    git["Git (desired)<br/>Helm charts + values"] --> ctl["GitOps controller<br/>pull + reconcile"]
+    ctl --> k8s["Kubernetes cluster<br/>Helm releases"]
+    k8s --> wl["Workloads<br/>pods, services"]
+    k8s -. drift detection .-> ctl
+```
 
-## 📱 Social Media
+Also in flight: splitting CI and CD ownership so the deploy side runs in its own GitHub org (evaluating Octopus Deploy and Harness), a drift-reconciliation scheduler, and a tag-based release dashboard.
 
-Connect with me on [LinkedIn](https://www.linkedin.com/in/richard-daniel-comeau/) for collaboration or any inquiries.
+## Selected projects
 
-Looking forward to connecting with fellow developers and enthusiasts. Let's build amazing things together!
+- richardcomeau.com — my site and content hub: Astro v5, React 19, Tailwind v4, a single Cloudflare Worker, git-based content with Keystatic. Shipped v1.0.0.
+- Market Pricing Engine — a Rust and Python pricing engine on the principle "Rust computes, Python serves," bridged with PyO3 and maturin and served over FastAPI.
+- Wealth Build — co-founded FinTech and AI venture; I lead the engineering.
+
+## Experience
+
+- Plante Moran — Senior Consultant, Platform Engineering — Feb 2023 to present
+- Wealth Build — Co-Founder / CTO — Oct 2021 to present
+- Vizient, Inc — Software Engineer — Sep 2020 to Feb 2023
+- WebMall — Full Stack Developer — 2020
+- U.S. Navy — Database Administrator / Program Manager — 2013 to 2020
+
+## Tech
+
+Platform and DevOps: GitHub Actions, Azure DevOps, CI/CD, tag-based releases, PowerShell, Kubernetes, Helm, GitOps, Docker, TeamDynamix
+Languages: C#, TypeScript, Python, Rust, SQL
+Web and cloud: .NET, React, Astro, Node, Azure, Cloudflare Workers, Supabase and PostgreSQL
+
+## Certifications
+
+- Microsoft Certified: Azure IoT Developer Specialty
+- Microsoft Certified: Azure Fundamentals (AZ-900)
+
+## Elsewhere
+
+- LinkedIn: [richard-daniel-comeau](https://www.linkedin.com/in/richard-daniel-comeau/)
+- Site: [richardcomeau.com](https://richardcomeau.com)
